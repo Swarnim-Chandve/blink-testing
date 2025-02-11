@@ -106,7 +106,7 @@ import {
   export async function GET(request: Request) {
     const url = new URL(request.url);
     const payload: ActionGetResponse = {
-      icon: "/images/icon.png",
+      icon: "/public/imaa.jpg",
       title: "Donate to Swarnim",
       description: "Support Swarnim by donating SOL.",
       label: "Donate",
