@@ -126,9 +126,8 @@ import {
   }
   
   export const OPTIONS = GET;
-  
   // POST request handler
-  export async function POST(request: Request) {
+export async function POST(request: Request) {
     const body: ActionPostRequest = await request.json();
     const url = new URL(request.url);
     const amount = Number(url.searchParams.get("amount")) || 0.1;
@@ -136,7 +135,7 @@ import {
   
     try {
       sender = new PublicKey(body.account);
-    } catch (e) {  // Using 'e' as the error parameter
+    } catch (e) {
       return new Response(
         JSON.stringify({
           error: {
@@ -165,10 +164,12 @@ import {
   
     const payload: ActionPostResponse = await createPostResponse({
       fields: {
+        type: "transaction", // Add the required type property
         transaction,
         message: "Transaction created",
       },
     });
+  
     return new Response(JSON.stringify(payload), {
       headers: ACTIONS_CORS_HEADERS,
     });
