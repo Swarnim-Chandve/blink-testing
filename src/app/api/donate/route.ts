@@ -86,7 +86,6 @@
 //   }
 
 
-
 import {
     ACTIONS_CORS_HEADERS,
     ActionGetResponse,
@@ -137,11 +136,11 @@ import {
   
     try {
       sender = new PublicKey(body.account);
-    } catch (err) { // Changed 'error' to 'err' since we're using it
+    } catch (e) {  // Using 'e' as the error parameter
       return new Response(
         JSON.stringify({
           error: {
-            message: err instanceof Error ? err.message : "Invalid account",
+            message: e instanceof Error ? e.message : "Invalid account",
           },
         }),
         {
